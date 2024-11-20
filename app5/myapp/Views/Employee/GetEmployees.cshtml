@@ -1,0 +1,38 @@
+﻿@using myapp.Models;
+@{
+    ViewData["Title"] = "Employee Page";
+    List<Employee> list = ViewData["allemps"] as List<Employee>;
+}
+
+<div>
+    <div class="container">
+        <h1>Employees</h1>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-light table-striped">
+                    <tbody>
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Delete Action</th>
+                                <th scope="col">Edit Action</th>
+                                <th scope="col">View Action</th>
+                                
+                            </tr>
+                        </thead>
+                        @foreach (Employee item in list)
+                        {
+                            <tr scope="row" >
+                                <td>@item.Id &nbsp;</td>
+                                <td>@item.Name &nbsp;</td>
+                                <td> <button class="btn btn-danger btn-sm"><a href="/Employee/Delete/@item.Id">Delete &nbsp; </a> </button> </td>
+
+                                <td> <button class="btn btn-warning btn-sm"><a href="/Employee/Edit/@item.Id">Edit</a></button>  </td>
+                                <td> <button class="btn btn-success btn-sm"><a href="/Employee/ViewEmp/@item.Id">ViewEmp</a></button>  </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <button class="btn btn-info"><a href="/Employee/Add">AddEmployee</a></button> 
+            </div>
